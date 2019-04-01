@@ -15,7 +15,6 @@
 using System;
 using System.Net;
 using System.Net.Sockets;
-using System.Threading.Tasks;
 
 namespace XPlaneUDP
 {
@@ -32,7 +31,7 @@ namespace XPlaneUDP
 
             sender = new IPEndPoint(IPAddress.Any, 0);
         }
-        
+
         public void Dispose()
         {
             client.Close();

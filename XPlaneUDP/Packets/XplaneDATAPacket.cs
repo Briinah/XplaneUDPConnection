@@ -1,5 +1,4 @@
-﻿using System;
-/* Copyright 2019 KLM Team Reimagineers
+﻿/* Copyright 2019 KLM Team Reimagineers
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), 
  * to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, 
@@ -13,11 +12,7 @@
  * IN THE SOFTWARE.
 */
 
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+using System;
 namespace XPlaneUDP
 {
     public struct XplaneDATAPacket : IXplanePacket
@@ -56,16 +51,16 @@ namespace XPlaneUDP
         public byte[] ToBytes()
         {
             byte[] bytes = new byte[41];
-            
+
             Buffer.BlockCopy(header, 0, bytes, 0, header.Length);
             Buffer.BlockCopy(dataIndex, 0, bytes, header.Length, dataIndex.Length);
-            
+
             for (int i = 0; i < data.Length; i++)
             {
                 byte[] floatValue = BitConverter.GetBytes(data[i]);
                 Buffer.BlockCopy(floatValue, 0, bytes, header.Length + dataIndex.Length + floatValue.Length * i, floatValue.Length);
             }
-            
+
             return bytes;
         }
     }

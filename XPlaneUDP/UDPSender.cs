@@ -13,12 +13,8 @@
 */
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Sockets;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace XPlaneUDP
 {
@@ -26,7 +22,7 @@ namespace XPlaneUDP
     {
         private UdpClient server;
 
-        public UDPSender (IPAddress IP, int port)
+        public UDPSender(IPAddress IP, int port)
         {
             server = new UdpClient(IP.ToString(), port);
         }
@@ -43,6 +39,6 @@ namespace XPlaneUDP
             // Send the data to X-Plane
             server.Send(XFData, XFData.Length);
         }
-        
+
     }
 }
